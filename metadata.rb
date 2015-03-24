@@ -1,0 +1,7 @@
+name             'docker-compose'
+maintainer       'YOUR_NAME'
+maintainer_email 'YOUR_EMAIL'
+license          'All rights reserved'
+description      'Installs/Configures docker-compose'
+long_description 'Installs/Configures docker-compose'
+version          '0.1.0'
