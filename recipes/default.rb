@@ -11,14 +11,14 @@ include_recipe 'docker'
 
 remote_file '/usr/local/bin/docker-compose' do
   source "https://github.com/docker/compose/releases/download/#{node['docker-compose']['version']}/docker-compose-#{node[:kernel][:name]}-#{node[:kernel][:machine]}"
-  mode '0755'
+  mode 00755
   owner 'root'
   group 'root'
 end
 
 directory '/etc/docker-compose.d' do
   path node['docker-compose']['config_directory']
-  mode '0755'
+  mode 00755
   owner 'root'
   group 'root'
 end
@@ -28,7 +28,7 @@ end
 
 template '/etc/init/docker-compose.conf' do
   source 'docker-compose.conf.erb'
-  mode '0600'
+  mode 00600
   owner 'root'
   group 'root'
 end
