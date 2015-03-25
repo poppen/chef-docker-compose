@@ -7,10 +7,15 @@ provisioner:
 
 platforms:
   - name: ubuntu-12.04
-  - name: centos-6.4
 
 suites:
   - name: default
     run_list:
       - recipe[docker-compose::default]
     attributes:
+      docker-compose:
+        config:
+          base:
+            image: "ubuntu:12.04"
+            ports:
+              - "8022:22"

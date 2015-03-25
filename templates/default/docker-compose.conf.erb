@@ -1,0 +1,12 @@
+description "Docker Compose"
+
+start on filesystem and started docker
+stop on runlevel [!2345]
+
+respawn
+
+chdir /etc/docker-compose.d
+
+script
+    exec /usr/local/bin/docker-compose up
+end script
