@@ -1,12 +1,13 @@
 ---
 driver:
-  name: vagrant
-
-provisioner:
-  name: chef_solo
+  name: docker_cli
+  driver_config:
+    privileged: true
 
 platforms:
   - name: ubuntu-12.04
+    driver_config:
+      image: ubuntu:12.04
 
 suites:
   - name: default

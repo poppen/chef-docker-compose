@@ -1,0 +1,11 @@
+machine:
+  services:
+    - docker
+
+dependencies:
+  override:
+    - bundle install:
+        timeout: 180
+test:
+  override:
+    - bundle exec kitchen test
