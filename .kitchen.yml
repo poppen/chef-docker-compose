@@ -1,6 +1,6 @@
 ---
 driver:
-  name: docker_cli
+  name: docker
   driver_config:
     privileged: true
 
