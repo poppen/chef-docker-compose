@@ -9,7 +9,6 @@ build:
         code: |
           bundle exec kitchen test
   after-steps:
-    # Send notification
-    - wantedly/pretty-slack-notify:
+    - auxesis/slack-notify-via-webhook:
         webhook_url: $SLACK_WEBHOOK_URL
-        channel: general
+        channel: "#general"
