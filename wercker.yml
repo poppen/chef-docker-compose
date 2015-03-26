@@ -1,33 +1,12 @@
-box: ubuntu:14.04
+box: masutaka/rvm-vagrant-aws@1.2.0
 build:
   steps:
-    - script:
-        name: apt-get update
-        code: |
-          sudo apt-get -y update
-    - script:
-        name: install docker
-        code: |
-          sudo apt-get -y install wget
-          sudo sh -c 'wget -qO- https://get.docker.com/ | sh'
-          sudo service docker start
-    - script:
-        name: install ruby
-        code: |
-          sudo apt-get -y install software-properties-common
-          sudo add-apt-repository -y ppa:brightbox/ruby-ng
-          sudo apt-get -y update && sudo apt-get install -y ruby2.2
-    - script:
-        name: pull docker images
-        code: |
-          sudo docker pull ubuntu:12.04
     - bundle-install:
         jobs: 4
         without: development
     - script:
         name: kitchen test
         code: |
-          echo $DOCKER_HOST
           bundle exec kitchen test
   after-steps:
     # Send notification
