@@ -17,7 +17,7 @@ build:
           rvm --default use 2.2.1
           echo "gem: --no-rdoc --no-ri" >> $HOME/.gemrc
     - rvm-use:
-      version: 2.2.1
+        version: 2.2.1
     - script:
         name: update docker
         code: |
