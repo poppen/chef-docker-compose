@@ -5,7 +5,7 @@ machine:
 dependencies:
   override:
     - bundle install:
-        timeout: 180
+        timeout: 1500
 test:
   override:
     - bundle exec kitchen test
