@@ -1,7 +1,8 @@
 ---
 driver:
   name: docker_cli
-  socket: <%= ENV['DOCKER_HOST'] %>
+  driver_config:
+    privileged: true
 
 provisioner:
   name: chef_zero
