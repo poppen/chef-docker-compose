@@ -10,6 +10,7 @@ build:
         code: |
           sudo apt-get -y install wget
           sudo sh -c 'wget -qO- https://get.docker.com/ | sh'
+          sudo service docker start
     - script:
         name: install ruby
         code: |
@@ -19,7 +20,7 @@ build:
     - script:
         name: pull docker images
         code: |
-          docker pull ubuntu:12.04
+          sudo docker pull ubuntu:12.04
     - bundle-install:
         jobs: 4
         without: development
