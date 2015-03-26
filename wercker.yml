@@ -1,28 +1,21 @@
-box: wercker-labs/docker
+box: ubuntu:14.04
 build:
   steps:
     - script:
-        name: run apt-get update -y
+        name: apt-get update
         code: |
-          sudo apt-get update
+          sudo apt-get -y update
     - script:
-        name: install rvm
+        name: install docker
         code: |
-          sudo apt-get install git zlib1g-dev libreadline-dev libqtwebkit-dev curl -y
-          sudo apt-get remove ruby1.9.1
-           gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
-          curl -sSL https://get.rvm.io | bash -s stable
-          echo "bundler -v~>1.5.1" > $HOME/.rvm/gemsets/global.gems
-          source $HOME/.rvm/scripts/rvm
-          rvm install 2.2.1
-          rvm --default use 2.2.1
-          echo "gem: --no-rdoc --no-ri" >> $HOME/.gemrc
-    - rvm-use:
-        version: 2.2.1
+          sudo apt-get -y install wget
+          sudo sh -c 'wget -qO- https://get.docker.com/ | sh'
     - script:
-        name: update docker
+        name: install ruby
         code: |
-          sudo apt-get -y install lxc-docker
+          sudo apt-get -y install software-properties-common
+          sudo add-apt-repository -y ppa:brightbox/ruby-ng
+          sudo apt-get -y update && sudo apt-get install -y ruby2.2
     - script:
         name: pull docker images
         code: |
