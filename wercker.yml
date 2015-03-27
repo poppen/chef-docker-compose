@@ -18,7 +18,7 @@ build:
         name: kitchen test
         code: |
           chef gem install kitchen-docker
-          chef kitchen test
+          kitchen test
   after-steps:
     - auxesis/slack-notify-via-webhook:
         webhook_url: $SLACK_WEBHOOK_URL
