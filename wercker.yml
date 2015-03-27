@@ -9,7 +9,7 @@ build:
           sudo apt-get -y install ruby2.0
           sudo apt-get -y install lxc-docker
           echo "gem: --no-rdoc --no-ri" >> $HOME/.gemrc
-          gem install bundler
+          sudo gem install bundler
     - bundle-install:
         jobs: 4
     - script:
