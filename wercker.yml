@@ -7,13 +7,8 @@ build:
         code: |
           sudo apt-get -y update
           sudo apt-get -y install wget
-          mkdir -p $WERCKER_CACHE_DIR/wercker/chefdk
-          export CHEF_DEB=chefdk_0.4.0-1_amd64.deb
-          export CACHE_DIR=$WERCKER_CACHE_DIR/wercker/chefdk
-          mkdir -p $CACHE_DIR
-          if [ ! -f $CACHE_DIR/$CHEF_DEB ]; then wget --no-check-certificate -P $CACHE_DIR https://opscode-omnibus-packages.s3.amazonaws.com/ubuntu/12.04/x86_64/$CHEF_DEB; fi;
-          sudo dpkg -i $CACHE_DIR/$CHEF_DEB
           sudo apt-get -y install lxc-docker
+    - poppen/chefdk
     - script:
         name: kitchen test
         code: |
