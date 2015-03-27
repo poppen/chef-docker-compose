@@ -6,7 +6,7 @@ build:
         name: Setup userland
         code: |
           sudo apt-get -y update
-          sudo apt-get -y install ruby2.0
+          sudo apt-get -y install ruby2.0 ruby2.0-dev
           sudo apt-get -y install lxc-docker
           echo "gem: --no-rdoc --no-ri" >> $HOME/.gemrc
           sudo gem install bundler
