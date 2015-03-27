@@ -2,12 +2,12 @@ box: wercker-labs/docker
 build:
   steps:
     - script:
-      name: Setup userland
-      code: |
-        sudo apt-get -y update
-        sudo apt-get -y install ruby2.0
-        sudo gem install bundler
-        sudo apt-get -y install lxc-docker
+        name: Setup userland
+        code: |
+          sudo apt-get -y update
+          sudo apt-get -y install ruby2.0
+          sudo gem install bundler
+          sudo apt-get -y install lxc-docker
     - bundle-install:
         jobs: 4
         without: development
