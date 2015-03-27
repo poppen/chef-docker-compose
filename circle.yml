@@ -8,4 +8,4 @@ dependencies:
         timeout: 1500
 test:
   override:
-    - bundle exec kitchen test
+    - bundle exec kitchen test --destroy=never
