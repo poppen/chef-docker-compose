@@ -14,8 +14,6 @@ build:
           echo "gem: --no-rdoc --no-ri" >> $HOME/.gemrc
           sudo gem update --system
           sudo gem install bundler
-    - bundle-install:
-        jobs: 4
     - script:
         name: kitchen test
         code: |
