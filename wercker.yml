@@ -6,16 +6,21 @@ build:
         name: Setup userland
         code: |
           sudo apt-get -y update
-          sudo apt-get -y install ruby2.0 ruby2.0-dev
+          sudo apt-get -y install wget
+          export CHEF_DEB=chefdk_0.4.0-1_amd64.deb
+          wget --no-check-certificate https://opscode-omnibus-packages.s3.amazonaws.com/ubuntu/12.04/x86_64/$CHEF_DEB
+          sudo dpkg -i $CHEF_DEB
           sudo apt-get -y install lxc-docker
           echo "gem: --no-rdoc --no-ri" >> $HOME/.gemrc
+          sudo gem update --system
           sudo gem install bundler
     - bundle-install:
         jobs: 4
     - script:
         name: kitchen test
         code: |
-          bundle exec kitchen test
+          chef gem install kitchen-docker
+          chef kitchen test
   after-steps:
     - auxesis/slack-notify-via-webhook:
         webhook_url: $SLACK_WEBHOOK_URL
